@@ -1,0 +1,25 @@
+{
+  "name": "app_ui",
+  "version": "1.0.0",
+  "description": "User interface of user application",
+  "main": "./dist/main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Nebula_POC"
+  },
+  "keywords": [
+    "user",
+    "managment",
+    "simple"
+  ],
+  "author": "Camila Malaga",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "typescript": "^5.4.3"
+  }
+}
