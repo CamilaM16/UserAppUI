@@ -8,65 +8,12 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2024.1.319/js/kendo.all.min.js"></script>
+    <script src="../kendo-ui-license.js"></script>
 </head>
 <body>
-  
-    <form id="form"></form>
-
-    <script>
-      $(document).ready(function () {
-        $("#form").kendoForm({
-              size: 'large',
-          orientation: "horizontal",
-          validatable: {
-            validateOnBlur: true,
-            validationSummary: true,
-            errorTemplate: "<span>#=message#</span>"
-          },
-          formData: {
-            Username: "Alex",
-            Email: "alex123@email.com",
-            Password: "pass123",
-            Birth: new Date('03/06/2001'),
-            City: 2
-          },
-          items: [ 
-            { field: "Username", label: "Username:", validation: { required: true } },
-            { field: "Email", label: "Email:", validation: { required: true, email: true } },
-            {
-              field: "Password",
-              label: "Password:",
-              validation: { required: true },
-              hint: "Hint: enter alphanumeric characters only.",
-              editor: function (container, options) {
-                $('<input type="password" id="Password" name="' + options.field + '" title="Password" required="required" autocomplete="off" aria-labelledby="Password-form-label" data-bind="value: Password" aria-describedby="Password-form-hint"/>')
-                  .appendTo(container)
-                  .kendoTextBox();
-              }
-            },
-            {
-              field: "City",
-              editor:"DropDownList",
-              editorOptions:{
-                dataTextField:"text",
-                dataValueField:"id",
-                dataSource: {
-                  data: [
-                    { text:"Sofia", id:1 },
-                    { text:"Bern", id: 2 },
-                    { text:"Napoli", id:3 }
-                  ]
-                }
-              }
-            },
-            { field: "Birth", label: { text: "Date of birth:", optional: true }, format: 'dd MMMM yyyy'},            
-          ],
-          submit: function(e) {
-            e.preventDefault();
-            alert('Form submitted successfully');
-          }
-        });
-      });
-    </script>
+    <button id="openPopup">Abrir Popup</button>
+    <div id="popup" >
+        <form id="form"></form>
+    </div>
 </body>
 </html>
