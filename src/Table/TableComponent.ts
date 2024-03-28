@@ -1,4 +1,5 @@
-import { User } from "Model/User";
+import { SetUserViewModel } from "../Model/ViewModel";
+import { BaseURL } from "../Api/Data";
 
 export function Table() {
   return $("#my-grid").kendoGrid({
@@ -11,13 +12,18 @@ export function Table() {
       { field: "ExpiryDate", title: "Expiry Password Date", width: "150px", format: "{0:dd-MM-yyyy}" },
     ],
     pageable: true,
+    selectable: "row",
     editable: "popup",
-    dataSource: DataSource()
+    dataSource: DataSource(),
+    change: function (e) {
+      var selectedRow = this.dataItem(this.select());
+      SetUserViewModel(selectedRow);
+      console.log("Fila seleccionada:", selectedRow);
+  }
   });
 }
 
 function DataSource() {
-  const BaseURL = "http://localhost:44341/Users";
   return new kendo.data.DataSource( {
     pageSize: 15,
     type: "odata-v4",
