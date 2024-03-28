@@ -2,21 +2,52 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Kendo UI Snippet</title>
+    <title>USer App</title>
 
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/themes/7.2.1/default/default-ocean-blue.css"/>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/themes/7.2.1/bootstrap/bootstrap-3.css"/>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2024.1.319/js/kendo.all.min.js"></script>
     <script src="../kendo-ui-license.js"></script>
 </head>
 <body>
-    <button id="openPopup">Abrir Popup</button>
     <div id="popup" >
         <form id="form"></form>
     </div>
 
-    <div id="my-grid"></div>
+    <div class="k-card k-card-vertical" style="height:100%;">
+        <div class="k-card-header k-hbox">
+            <h5 class="k-card-title">User App</h5>
+            <button id="openPopup" class="btn btn-primary" style="position:absolute;right: 1rem;top:0.5rem; width: 125px;">Add User</button>
+        </div>
+        <div class="k-card-body">
+            <div class="k-card k-card-horizontal">
+                <div id="my-grid"></div>
+                <div class="k-vbox k-column">
+                    <div class="k-card-header">
+                        <h5 id="name" class="k-card-title">First Name Last Name</h5>
+                        <h6 id="user-name" class="k-card-subtitle">User Name</h6>
+                    </div>
+                    <div id="data" class="k-card-body" style="width: 30vw;">
+                        <p>Some quick example <strong> strong label:</strong> text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <div class="k-actions k-card-actions k-actions-center k-actions-horizontal">
+                        <span class="k-card-action">
+                            <button class="btn btn-primary k-button k-button-md k-rounded-md k-button-solid k-button-solid-primary" style="width: 125px;">Edit</button>
+                        </span>
+                        <span class="k-card-action">
+                            <button class="k-button k-button-flat-primary k-button-flat k-button-md k-rounded-md" style="width: 125px;">Delete</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="k-card-footer" style="width:100%;">
+            <div class="k-hbox k-text-center">
+                <div class="k-column k-text-center">UserApp-2024</div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

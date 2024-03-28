@@ -1,6 +1,6 @@
 {
-  "scripts": {  
-    "serve": "webpack-dev-server --open",  
+  "scripts": {
+    "serve": "webpack-dev-server --open",
     "build": "webpack --mode production"
   },
   "devDependencies": {
@@ -20,6 +20,7 @@
   "dependencies": {
     "@types/jquery": "^3.5.29",
     "@types/kendo-ui": "^2023.2.5",
+    "axios": "^1.6.8",
     "express": "^4.19.2",
     "knockout": "^3.5.1"
   }
