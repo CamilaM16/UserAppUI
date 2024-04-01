@@ -6,7 +6,7 @@ module.exports = {
   entry: {  
     app: './src/index.ts'  
   },  
-  devtool: 'source-map', // Generate separate source map files  
+  devtool: 'source-map',
   module: {  
     rules: [  
       {  
@@ -15,14 +15,14 @@ module.exports = {
         loader: 'babel-loader'  
       },  
       {  
-        test: /\.html$/, // All Knockout.js component HTML templates  
-        use: 'html-loader' // Adds the component templates to the bundle  
+        test: /\.html$/, 
+        use: 'html-loader' 
       }  
     ]  
   },  
   plugins: [  
     new HtmlWebpackPlugin({  
-      template: './web-template/index.html'  
+      template: './index.html'  
     }),  
   ],  
   resolve: {  

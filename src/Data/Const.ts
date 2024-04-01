@@ -1,6 +1,6 @@
 import { DataPopup } from "../Model/Data";
 
-export const BASE_URL = "http://localhost:44341/Users";
+export const BASE_URL = "http://localhost/Backend/Users";
 export const PASSWORD = 'Password';
 export const FORMAT_DATE = 'dd MMMM yyyy';
 export const WARNING_MESSAGE = 'Invalid Form Activation';
