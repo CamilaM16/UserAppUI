@@ -1,49 +1,49 @@
-import { PopupTitle, UserViewModel } from "../Model/ViewModel";
-import { CreateUserForm, EditUserForm } from "../Form/FormComponent";
+import { UserViewModel } from "../Model/ViewModel";
+import { CleanData, CreateForm, UpdateData } from "../Form/FormComponent";
+
+let popup;
 
 const openPopup = (name:string) => {
     $(name).data("kendoWindow")?.center().open();
 }
 
-export function PopupAdd() {
-    $("#popup-add").kendoWindow({
-        title: "Add User",
+export function Popup() {
+    $("#popup").kendoWindow({
+        title: UserViewModel.titlePopup(),
         visible: false,
         modal: true,
         resizable: false,
         width: 600
     });
 
-    $("#addButton").click(function () {
-        PopupTitle.title("Add User");
-        CreateUserForm();
-        openPopup("#popup-add");
-    });
+    popup = $("#popup").data("kendoWindow");
+    CreateForm();
 }
 
-export function PopupEdit() {
-    $("#popup-edit").kendoWindow({
-        title: "Edit User",
-        visible: false,
-        modal: true,
-        resizable: false,
-        width: 600
+export function EventClickForm(action: Function) {
+    $("#addButton").click(function () {
+        UserViewModel.titlePopup("Add User");
+        UserViewModel.SuccessMessage("User Created")
+        popup.setOptions({
+            title: UserViewModel.titlePopup()
+        });
+        CleanData();
+        openPopup("#popup");
+        action();
     });
 
     $("#editButton").click(function () {
-        PopupTitle.title("Edit User");
-        EditUserForm(
-            {
-              Id: UserViewModel.Id(),
-              LogOnName: UserViewModel.LogOnName(),
-              Password: UserViewModel.Password(),
-              IsEnabled: UserViewModel.IsEnabled(),
-              ExpiryDate: new Date(UserViewModel.ExpiryDate()),
-              PasswordChangeDate: new Date(UserViewModel.PasswordChangeDate()),
-              FirstName: UserViewModel.FirstName(),
-              LastName: UserViewModel.LastName()                                                                                                                                                                                                
-            }
-          );
-        openPopup("#popup-edit");
+        UserViewModel.titlePopup("Edit User");
+        UserViewModel.SuccessMessage("User Updated");
+        popup.setOptions({
+            title: UserViewModel.titlePopup()
+        });
+        UpdateData();
+        openPopup("#popup");
+        action();
     });
+}
+
+function EnableButtonClickEvent() {
+
 }

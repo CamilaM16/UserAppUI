@@ -1,5 +1,4 @@
-const PASSWORD = 'Password';
-const FORMAT_DATE = 'dd MMMM yyyy';
+import { FORMAT_DATE, PASSWORD } from "../../Data/Const";
 
 export function PasswordInput(fieldName: string) {
     return {
@@ -15,7 +14,7 @@ export function PasswordInput(fieldName: string) {
 }
 
 export function DataInput(fieldName: string, labelName: string, optional: boolean) {
-    return { field: fieldName, label: { text: `${labelName}:`, optional },  validation: { required: !optional },format: FORMAT_DATE };
+    return { field: fieldName, editor: "DatePicker", label: { text: `${labelName}:`, optional },  validation: { required: !optional },format: FORMAT_DATE };
 }
 
 export function TextInput(fieldName: string, labelName: string) {

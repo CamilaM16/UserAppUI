@@ -1,8 +1,10 @@
 import { SetUserViewModel } from "../Model/ViewModel";
-import { BaseURL } from "../Api/Data";
+import { BASE_URL } from "../Data/Const";
 
 export function Table() {
-  return $("#my-grid").kendoGrid({
+
+  var dataSource = DataSource();
+  $("#my-grid").kendoGrid({
     columns: [
       { field: "IsEnabled", title: "Status", width: "30px" },
       { field: "LogOnName", title: "User Name", width: "100px" },
@@ -14,13 +16,14 @@ export function Table() {
     pageable: true,
     selectable: "row",
     editable: "popup",
-    dataSource: DataSource(),
+    dataSource: dataSource,
     change: function (e) {
       var selectedRow = this.dataItem(this.select());
       SetUserViewModel(selectedRow);
       console.log("Fila seleccionada:", selectedRow);
   }
   });
+  return dataSource;
 }
 
 function DataSource() {
@@ -30,7 +33,7 @@ function DataSource() {
     transport: {
       read: {
         url: function () {
-          return BaseURL;
+          return BASE_URL;
         }
       }
     },
