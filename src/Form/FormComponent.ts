@@ -2,18 +2,7 @@ import { User } from "../Model/User";
 import { DataInput, PasswordInput, TextInput, SwitchText } from "./Component/Types";
 import { create, update } from "../Data/DataApi";
 import { UpdatedUser, UserViewModel } from "../Model/ViewModel";
-import { DATA_ADD } from "../Data/Const";
-
-const INITIAL_DATA = {
-  Id: "",
-  LogOnName: "Username",
-  Password: "Admin123",
-  IsEnabled: true,
-  ExpiryDate: new Date("2024-07-07"),
-  PasswordChangeDate: new Date("2024-06-07"),
-  FirstName: "FirstName",
-  LastName: "LastName"
-};
+import { DATA_ADD, DATA_EDIT, INITIAL_DATA, WARNING_MESSAGE } from "../Data/Const";
 
 function FormItems() {
   return [
@@ -27,36 +16,35 @@ function FormItems() {
   ]
 }
 
-function SetUpForm(userData: kendo.ui.FormData) {
+function SetUpForm(userData: kendo.ui.FormData, action: Function) {
   return {
     size: 'large',
     formData: userData,
     items: FormItems(),
-    submit: SuccessFunction
+    submit: (e: any) => {SuccessFunction(e); action();}
   }
 }
 
-const aux = (e: any) => console.log(e);
+const aux = () => alert(UserViewModel.SuccessMessage());
 
-
-function SuccessFunction(e: kendo.ui.FormSubmitEvent) {
+function SuccessFunction(e: any) {
   e.preventDefault();
   let user: User = e.model;
   switch (UserViewModel.titlePopup()) {
     case DATA_ADD.title:
       create(user, aux);
       break;
-    case DATA_ADD.title:
+    case DATA_EDIT.title:
       update(user.Id, user, aux)
       break;
     default:
-      aux(e);
+      alert(WARNING_MESSAGE);
       break;
   }
-  alert(UserViewModel.SuccessMessage());
 }
-export function CreateForm() {
-  $("#form").kendoForm(SetUpForm(INITIAL_DATA));
+
+export function CreateForm(action: Function) {
+  $("#form").kendoForm(SetUpForm(INITIAL_DATA, action));
 }
 
 export function UpdateData() {

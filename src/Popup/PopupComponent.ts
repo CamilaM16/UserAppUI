@@ -1,13 +1,11 @@
 import { UserViewModel } from "../Model/ViewModel";
-import { CleanData, CreateForm, UpdateData } from "../Form/FormComponent";
+import { CreateForm } from "../Form/FormComponent";
 
-let popup;
-
-const openPopup = (name:string) => {
-    $(name).data("kendoWindow")?.center().open();
+export function OpenPopup() {
+    $("#popup").data("kendoWindow")?.center().open();
 }
 
-export function Popup() {
+export function Popup(successAction: Function) {
     $("#popup").kendoWindow({
         title: UserViewModel.titlePopup(),
         visible: false,
@@ -16,34 +14,20 @@ export function Popup() {
         width: 600
     });
 
-    popup = $("#popup").data("kendoWindow");
-    CreateForm();
+    const success = () => {
+        successAction();
+        ClosePopUp();
+    };
+    CreateForm(success);
 }
 
-export function EventClickForm(action: Function) {
-    $("#addButton").click(function () {
-        UserViewModel.titlePopup("Add User");
-        UserViewModel.SuccessMessage("User Created")
-        popup.setOptions({
-            title: UserViewModel.titlePopup()
-        });
-        CleanData();
-        openPopup("#popup");
-        action();
-    });
-
-    $("#editButton").click(function () {
-        UserViewModel.titlePopup("Edit User");
-        UserViewModel.SuccessMessage("User Updated");
-        popup.setOptions({
-            title: UserViewModel.titlePopup()
-        });
-        UpdateData();
-        openPopup("#popup");
-        action();
+export function UpdateTitlePopup() {
+    let popup = $("#popup").data("kendoWindow");
+    popup.setOptions({
+        title: UserViewModel.titlePopup()
     });
 }
 
-function EnableButtonClickEvent() {
-
+function ClosePopUp() {
+    $("#popup").data("kendoWindow")?.close();
 }

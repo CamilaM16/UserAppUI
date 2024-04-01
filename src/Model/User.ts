@@ -14,8 +14,8 @@ export interface UserDb {
     LogOnName: string;
     PasswordHash: string;
     IsEnabled: boolean;
-    ExpiryDate?: Date | null;
-    PasswordChangeDate: Date;
+    ExpiryDate?: string | null;
+    PasswordChangeDate: string;
     FirstName: string;
     LastName: string;
 }

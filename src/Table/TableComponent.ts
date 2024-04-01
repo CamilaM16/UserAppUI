@@ -2,7 +2,6 @@ import { SetUserViewModel } from "../Model/ViewModel";
 import { BASE_URL } from "../Data/Const";
 
 export function Table() {
-
   var dataSource = DataSource();
   $("#my-grid").kendoGrid({
     columns: [
@@ -15,12 +14,10 @@ export function Table() {
     ],
     pageable: true,
     selectable: "row",
-    editable: "popup",
     dataSource: dataSource,
     change: function (e) {
       var selectedRow = this.dataItem(this.select());
       SetUserViewModel(selectedRow);
-      console.log("Fila seleccionada:", selectedRow);
   }
   });
   return dataSource;
@@ -28,7 +25,7 @@ export function Table() {
 
 function DataSource() {
   return new kendo.data.DataSource( {
-    pageSize: 15,
+    pageSize: 13,
     type: "odata-v4",
     transport: {
       read: {
