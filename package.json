@@ -18,9 +18,12 @@
     "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/jquery": "^3.5.29",
     "@types/kendo-ui": "^2023.2.5",
     "axios": "^1.6.8",
+    "bcryptjs": "^2.4.3",
+    "crypto-browserify": "^3.12.0",
     "express": "^4.19.2",
     "knockout": "^3.5.1"
   }

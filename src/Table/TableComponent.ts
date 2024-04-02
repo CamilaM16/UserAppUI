@@ -5,12 +5,19 @@ export function Table() {
   var dataSource = DataSource();
   $("#my-grid").kendoGrid({
     columns: [
-      { field: "IsEnabled", title: "Status", width: "30px" },
+      { field: "IsEnabled", title: "Status", width: "30px", template:  function(dataItem: any) {
+        console.log(dataItem);
+        if (dataItem.IsEnabled === true) {
+            return "<span class='badge badge-success'>Activo</span>";
+        } else {
+            return "<span class='badge badge-danger'>Inactivo</span>";
+        }
+      } },
       { field: "LogOnName", title: "User Name", width: "100px" },
       { field: "FirstName", title: "First Name", width: "100px" },
       { field: "LastName", title: "Last Name", width: "100px" },
-      { field: "PasswordChangeDate", title: "Change Password Date", width: "150px", format: "{0:dd-MM-yyyy}" },
-      { field: "ExpiryDate", title: "Expiry Password Date", width: "150px", format: "{0:dd-MM-yyyy}" },
+      { field: "PasswordChangeDate", title: "Change Password Date", width: "100px", format: "{0:dd-MM-yyyy}" },
+      { field: "ExpiryDate", title: "Expiry Password Date", width: "100px", format: "{0:dd-MM-yyyy}" },
     ],
     pageable: true,
     selectable: "row",
