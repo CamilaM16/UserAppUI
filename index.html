@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>User App</title>
+
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/themes/7.2.1/bootstrap/bootstrap-3.css"/>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2024.1.319/js/kendo.all.min.js"></script>
+    <script src="./kendo-ui-license.js"></script>
+</head>
+<body>
+    <div id="popup" >
+        <form id="form"></form>
+    </div>
+
+    <div class="k-card k-card-vertical" style="height:100%;">
+        <div class="k-card-header k-hbox">
+            <h5 class="k-card-title">User App</h5>
+            <button id="addButton" class="btn btn-primary k-button k-button-md k-rounded-md k-button-solid k-button-solid-primary" style="position:absolute;right: 1rem;top:0.5rem; width: 125px;">Add User</button>
+        </div>
+        <div class="k-card-body">
+            <div class="k-card k-card-horizontal">
+                <div id="my-grid"></div>
+                <div class="k-vbox k-column">
+                    <div class="k-card-header">
+                        <h5 id="name" class="k-card-title">
+                            <span data-bind="text: FirstName"></span>
+                            <span data-bind="text: LastName"></span>
+                        </h5>
+                        <h6 id="user-name" class="k-card-subtitle" data-bind="text: LogOnName"></h6>
+                    </div>
+                    <div id="data" class="k-card-body" style="width: 30vw;">
+                        <p><strong> Change Password Date:</strong> <span data-bind="text: PasswordChangeDate"></span> </p>
+                        <p><strong> Status:</strong> <span data-bind="text: IsEnabled"></span> </p>
+                        <p><strong> Expiry Password Date:</strong> <span data-bind="text: ExpiryDate"></span> </p>
+                        <p><strong> Password:</strong> <span data-bind="text: Password"></span> </p>
+                    </div>
+                    <div class="k-actions k-card-actions k-actions-center k-actions-horizontal">
+                        <span class="k-card-action">
+                            <button id="editButton" class="btn btn-primary k-button k-button-md k-rounded-md k-button-solid k-button-solid-primary" style="width: 125px;">Edit</button>
+                        </span>
+                        <span class="k-card-action">
+                            <button id="deleteButton" class="k-button k-button-flat-primary k-button-flat k-button-md k-rounded-md" style="width: 125px;">Delete</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="k-card-footer" style="width:100%;">
+            <div class="k-hbox k-text-center">
+                <div class="k-column k-text-center">UserApp-2024</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
