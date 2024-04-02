@@ -1,5 +1,6 @@
-import { User, UserDb } from "Model/User";
-import { BASE_URL } from "./Const";
+import { User } from "Model/User";
+import { hash } from "bcryptjs";
+import { BASE_URL, SALT } from "./Const";
 import axios from "axios";
 import { Format } from "./Formater";
 
@@ -14,8 +15,9 @@ export async function get() {
     return result;
 }
 
-export function create(data:User, action: Function) {
-    axios.post(BASE_URL, Format(data))
+export async function create(data:User, action: Function) {
+
+    axios.post(BASE_URL, HashPassword(data))
     .then((response) => {
         var data = JSON.stringify(response.data);
         action();
@@ -37,7 +39,7 @@ export function remove(key:string, action: Function) {
 }
 
 export function update(key:string, data:User, action: Function) {
-    axios.put(`${BASE_URL}/${key}`, Format(data))
+    axios.put(`${BASE_URL}/${key}`, HashPassword(data))
     .then((response) => {
         var data = JSON.stringify(response.data);
         action();
@@ -47,3 +49,8 @@ export function update(key:string, data:User, action: Function) {
     });
 }
 
+async function HashPassword(data: User) {
+    let newUser = Format(data);
+    newUser.PasswordHash = await hash(data.Password, SALT); 
+    return newUser;
+}

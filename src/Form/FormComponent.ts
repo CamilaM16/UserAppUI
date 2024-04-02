@@ -21,21 +21,21 @@ function SetUpForm(userData: kendo.ui.FormData, action: Function) {
     size: 'large',
     formData: userData,
     items: FormItems(),
-    submit: (e: any) => {SuccessFunction(e); action();}
+    submit: (e: any) => { SuccessFunction(e, action); }
   }
 }
 
-const aux = () => alert(UserViewModel.SuccessMessage());
-
-function SuccessFunction(e: any) {
+function SuccessFunction(e: any, action: Function) {
   e.preventDefault();
   let user: User = e.model;
+  const f = () => { action(); alert(UserViewModel.SuccessMessage()); }
+
   switch (UserViewModel.titlePopup()) {
     case DATA_ADD.title:
-      create(user, aux);
+      create(user, f);
       break;
     case DATA_EDIT.title:
-      update(user.Id, user, aux)
+      update(user.Id, user, f)
       break;
     default:
       alert(WARNING_MESSAGE);
