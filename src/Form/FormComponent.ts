@@ -28,6 +28,7 @@ function SetUpForm(userData: kendo.ui.FormData, action: Function) {
 function SuccessFunction(e: any, action: Function) {
   e.preventDefault();
   let user: User = e.model;
+  console.log(user);
   const f = () => { action(); alert(UserViewModel.SuccessMessage()); }
 
   switch (UserViewModel.titlePopup()) {

@@ -16,8 +16,8 @@ export async function get() {
 }
 
 export async function create(data:User, action: Function) {
-
-    axios.post(BASE_URL, HashPassword(data))
+    let user = await HashPassword(data);
+    axios.post(BASE_URL, user)
     .then((response) => {
         var data = JSON.stringify(response.data);
         action();
@@ -38,8 +38,9 @@ export function remove(key:string, action: Function) {
     });
 }
 
-export function update(key:string, data:User, action: Function) {
-    axios.put(`${BASE_URL}/${key}`, HashPassword(data))
+export async function update(key:string, data:User, action: Function) {
+    let user = await HashPassword(data);
+    axios.put(`${BASE_URL}/${key}`, user)
     .then((response) => {
         var data = JSON.stringify(response.data);
         action();
