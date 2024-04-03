@@ -5,9 +5,9 @@ export function PasswordInput(fieldName: string) {
         field: fieldName,
         label: `${PASSWORD}:`,
         validation: { required: true },
-        hint: "*Enter alphanumeric characters only.",
-        editor: function (container: string | JQuery<HTMLElement> | JQuery.TypeOrArray<Element | DocumentFragment>, options: { field: string; }) {
-            $('<input type="password" id="Password" name="' + options.field + '" title="Password" required="required" autocomplete="off" aria-labelledby="Password-form-label" data-bind="value: Password" aria-describedby="Password-form-hint"/>')
+        hint:  "Minimun 8 characters",
+        editor: function (container: string | JQuery<HTMLElement> | JQuery.TypeOrArray<Element | DocumentFragment>, options: any) {
+            $('<input type="password" id="Password" name="' + options.label + '" title="Password" required="required" autocomplete="off" aria-labelledby="Password-form-label" data-bind="value: Password" aria-describedby="Password-form-hint"/>')
                 .appendTo(container).kendoTextBox();
         }
     }
