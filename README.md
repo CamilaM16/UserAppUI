@@ -2,10 +2,10 @@
 Welcome to the User Management Application
 
 ## Main Features
-*Create:* Add new users to the system by providing necessary details such as name, username, etc.
-*Read:* View the list of existing users along with their details.
-*Update:* Modify user information such as name, or any other relevant data.
-*Delete:* Remove users from the system as needed.
+- *Create:* Add new users to the system by providing necessary details such as name, username, etc.
+- *Read:* View the list of existing users along with their details.
+- *Update:* Modify user information such as name, or any other relevant data.
+- *Delete:* Remove users from the system as needed.
 
 ## How to use:
 Clone repoitory and run the next commands:
