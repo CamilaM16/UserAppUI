@@ -50,14 +50,14 @@ export function CreateForm(action: Function) {
 export function UpdateData() {
   var kendoForm = $("#form").data("kendoForm");
   let updatedUser = UpdatedUser();
-  kendoForm.setOptions({
+  kendoForm?.setOptions({
     formData: updatedUser
   });
 }
 
 export function CleanData() {
   var kendoForm = $("#form").data("kendoForm");
-  kendoForm.setOptions({
+  kendoForm?.setOptions({
     formData: {}
   });
 }
